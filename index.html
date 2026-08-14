@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
 <title>Vijay ❤️ Priya | Wedding Invitation</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Noto+Serif+Tamil:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+Tamil:wght@400;500;600;700&display=swap');
 
 *{
     margin:0;
@@ -14,438 +15,524 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
 body{
-    background:#180507;
-    color:#fff8df;
+    background:#120304;
+    color:#fff4d0;
     font-family:'Noto Serif Tamil',serif;
-    overflow-x:hidden;
 }
 
-/* PARTICLES */
-#particles{
+/* =========================
+   MAIN STAGE
+========================= */
+
+#stage{
     position:fixed;
     inset:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at center,#641919 0%,#300709 45%,#100203 100%);
+}
+
+/* cinematic vignette */
+
+#stage:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:90;
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(0,0,0,.30) 72%,
+            rgba(0,0,0,.80) 100%
+        );
+}
+
+/* =========================
+   SCENES
+========================= */
+
+.scene{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:30px;
+    opacity:0;
+    visibility:hidden;
+    transform:scale(1.08);
+    transition:
+        opacity 1.2s ease,
+        transform 1.8s cubic-bezier(.2,.7,.2,1);
+}
+
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    transform:scale(1);
+    z-index:10;
+}
+
+.scene-inner{
+    width:min(92vw,700px);
+    position:relative;
+    z-index:5;
+}
+
+/* =========================
+   GOLD FRAME
+========================= */
+
+.gold-frame{
+    position:absolute;
+    inset:20px;
+    border:1px solid rgba(240,190,72,.7);
     pointer-events:none;
     z-index:20;
 }
 
-.particle{
+.gold-frame:before,
+.gold-frame:after{
+    content:"";
+    position:absolute;
+    width:65px;
+    height:65px;
+    border:2px solid #d9a938;
+}
+
+.gold-frame:before{
+    top:-2px;
+    left:-2px;
+    border-right:0;
+    border-bottom:0;
+}
+
+.gold-frame:after{
+    right:-2px;
+    bottom:-2px;
+    border-left:0;
+    border-top:0;
+}
+
+.corner{
+    position:absolute;
+    color:#f3c85b;
+    font-size:25px;
+}
+
+.corner.tl{top:25px;left:28px}
+.corner.tr{top:25px;right:28px}
+.corner.bl{bottom:25px;left:28px}
+.corner.br{bottom:25px;right:28px}
+
+/* =========================
+   GOLD DUST
+========================= */
+
+#goldDust{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:30;
+}
+
+.dust{
     position:absolute;
     width:3px;
     height:3px;
-    background:#ffd76a;
     border-radius:50%;
-    opacity:.7;
-    animation:float 7s linear infinite;
+    background:#ffd86a;
+    box-shadow:0 0 8px #ffd86a;
+    animation:fall linear infinite;
 }
 
-@keyframes float{
-    0%{
-        transform:translateY(100vh) scale(.4);
+@keyframes fall{
+    from{
+        transform:translate3d(0,-10vh,0) rotate(0deg);
         opacity:0;
     }
-    20%{opacity:.8;}
-    80%{opacity:.8;}
-    100%{
-        transform:translateY(-10vh) scale(1);
+
+    15%{
+        opacity:.9;
+    }
+
+    85%{
+        opacity:.8;
+    }
+
+    to{
+        transform:translate3d(40px,110vh,0) rotate(360deg);
         opacity:0;
     }
 }
 
-/* GENERAL */
-section{
-    min-height:100vh;
-    position:relative;
+/* =========================
+   FLOWERS
+========================= */
+
+.flower-row{
+    position:absolute;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:100%;
     display:flex;
     justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:60px 20px;
-    overflow:hidden;
+    gap:7px;
+    z-index:4;
 }
 
-.gold{
-    color:#ffd76a;
+.flower{
+    width:22px;
+    height:22px;
+    background:#fff3ca;
+    border-radius:50%;
+    box-shadow:
+        0 0 0 5px rgba(255,245,210,.15),
+        0 0 10px rgba(255,220,120,.25);
+    position:relative;
 }
 
-.gold-line{
-    width:100px;
-    height:2px;
-    margin:20px auto;
-    background:linear-gradient(90deg,transparent,#ffd76a,transparent);
+.flower:after{
+    content:"";
+    position:absolute;
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#d89b21;
+    top:7px;
+    left:7px;
 }
 
-.ornament{
-    color:#ffd76a;
-    font-size:25px;
-    letter-spacing:10px;
+/* =========================
+   TEMPLE ARCH
+========================= */
+
+.temple-arch{
+    width:min(90vw,600px);
+    height:75vh;
+    max-height:720px;
+    border:5px solid #b87922;
+    border-bottom:0;
+    border-radius:300px 300px 0 0;
+    position:absolute;
+    left:50%;
+    top:13%;
+    transform:translateX(-50%);
+    opacity:.22;
+    box-shadow:
+        inset 0 0 50px rgba(255,194,70,.15),
+        0 0 40px rgba(255,190,60,.12);
+}
+
+.temple-arch:before{
+    content:"";
+    position:absolute;
+    inset:14px;
+    border:1px solid #e2b34c;
+    border-bottom:0;
+    border-radius:280px 280px 0 0;
+}
+
+/* =========================
+   TYPOGRAPHY
+========================= */
+
+.tiny{
+    font-size:11px;
+    letter-spacing:4px;
+    color:#e6c77b;
     margin-bottom:20px;
 }
 
-/* OPENING */
-#opening{
-    background:
-      radial-gradient(circle at center,#571817 0%,#26090a 45%,#090102 100%);
+.tamil{
+    font-size:clamp(27px,7vw,54px);
+    color:#ffeab0;
+    text-shadow:0 0 20px rgba(255,195,70,.25);
 }
 
-.temple-glow{
-    position:absolute;
-    width:500px;
-    height:500px;
-    border-radius:50%;
-    background:#e9a82f;
-    filter:blur(100px);
-    opacity:.13;
+.gold{
+    color:#f5c85c;
 }
 
-.opening-content{
-    position:relative;
-    z-index:2;
-    animation:fadeIn 2s ease;
+.script-line{
+    width:130px;
+    height:1px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #f0bd4e,
+        transparent
+    );
+    margin:25px auto;
+}
+
+/* =========================
+   SCENE 1
+========================= */
+
+.lamp{
+    font-size:80px;
+    margin:25px 0;
+    filter:
+        drop-shadow(0 0 12px #ff9d00)
+        drop-shadow(0 0 35px #ffcf54);
+    animation:lampPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes lampPulse{
+    from{transform:scale(.96)}
+    to{transform:scale(1.05)}
 }
 
 .sri{
     font-size:48px;
-    color:#ffd76a;
-    margin-bottom:20px;
+    color:#f5c85c;
 }
 
-.small-title{
-    font-size:17px;
-    letter-spacing:4px;
-    color:#f5d98b;
-}
+/* =========================
+   SCENE 2 NAMES
+========================= */
 
-.tamil-title{
-    font-size:clamp(28px,7vw,60px);
-    margin:20px 0;
-    color:#fff2c4;
-}
-
-.lamp{
-    font-size:70px;
-    animation:lampGlow 2s infinite alternate;
-}
-
-@keyframes lampGlow{
-    from{filter:drop-shadow(0 0 5px #ffb300);}
-    to{filter:drop-shadow(0 0 30px #ffd76a);}
-}
-
-.tap{
-    margin-top:35px;
-    color:#ffd76a;
-    font-size:14px;
-    letter-spacing:2px;
-    animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-    50%{opacity:.4;}
-}
-
-/* HERO */
-#hero{
-    background:
-      linear-gradient(#0005,#0008),
-      radial-gradient(circle,#721d1b,#240708 65%,#090102);
-}
-
-.hero-content{
-    z-index:2;
-}
-
-.invite{
-    font-size:15px;
-    letter-spacing:4px;
-    color:#e8c77b;
-}
-
-.names{
+.couple{
     font-family:'Cinzel',serif;
-    font-size:clamp(45px,11vw,100px);
-    line-height:1.15;
-    color:#ffd76a;
-    text-shadow:0 0 25px #9d671e;
-    margin:25px 0;
+    font-size:clamp(40px,11vw,92px);
+    line-height:1.1;
+    color:#f6cb61;
+    text-shadow:
+        0 0 10px rgba(255,210,90,.3),
+        0 0 35px rgba(180,100,10,.3);
+}
+
+.and{
+    font-family:'Cinzel',serif;
+    font-size:30px;
+    color:#fff0bd;
+    margin:14px;
 }
 
 .heart{
-    color:#ff8a70;
-    animation:heartbeat 1.5s infinite;
+    color:#ef765d;
+    display:inline-block;
+    animation:heart 1.3s infinite;
 }
 
-@keyframes heartbeat{
-    50%{transform:scale(1.15);}
+@keyframes heart{
+    50%{transform:scale(1.18)}
 }
 
-.date{
-    font-size:22px;
-    color:#fff4cc;
+/* =========================
+   ORNAMENT
+========================= */
+
+.ornament{
+    color:#e5b54d;
+    font-size:25px;
+    letter-spacing:8px;
+    margin:18px 0;
 }
 
-.scroll{
-    margin-top:50px;
-    font-size:13px;
-    letter-spacing:3px;
-    color:#d9bd72;
-}
-
-/* EVENTS */
-#events{
-    background:linear-gradient(135deg,#200506,#4d1110,#170304);
-}
-
-.events-container{
-    width:min(1000px,100%);
-}
-
-.section-title{
-    font-size:clamp(30px,6vw,50px);
-    color:#ffd76a;
-    margin-bottom:45px;
-}
-
-.event-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
+/* =========================
+   EVENT CARD
+========================= */
 
 .event-card{
-    background:linear-gradient(145deg,#5b1717,#280707);
-    border:1px solid #b88835;
-    border-radius:20px;
-    padding:30px 20px;
-    box-shadow:0 15px 40px #0008;
-    transition:.4s;
-}
-
-.event-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 50px #d99b3040;
+    width:min(88vw,520px);
+    margin:auto;
+    padding:38px 25px;
+    border:1px solid rgba(220,170,65,.75);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(92,19,19,.9),
+            rgba(32,5,7,.96)
+        );
+    box-shadow:
+        0 20px 80px rgba(0,0,0,.55),
+        inset 0 0 40px rgba(255,190,60,.04);
 }
 
 .event-icon{
-    font-size:45px;
+    font-size:55px;
     margin-bottom:15px;
 }
 
-.event-card h3{
-    color:#ffd76a;
-    font-size:25px;
-    margin-bottom:15px;
+.event-title{
+    font-size:clamp(28px,7vw,45px);
+    color:#f7cd68;
 }
 
-.event-card p{
-    color:#f9e9bd;
-    line-height:1.9;
-}
-
-/* WEDDING */
-#wedding{
-    background:
-      radial-gradient(circle at 50% 20%,#7c211e,#260708 60%,#080102);
-}
-
-.wedding-box{
-    max-width:850px;
-    padding:50px 25px;
-    border:1px solid #b88835;
-    background:#180404aa;
-    border-radius:25px;
-    box-shadow:0 0 70px #000;
-}
-
-.big-date{
+.event-date{
     font-family:'Cinzel',serif;
-    font-size:clamp(38px,8vw,75px);
-    color:#ffd76a;
+    font-size:19px;
+    letter-spacing:2px;
+    color:#fff0bd;
     margin:20px 0;
 }
 
-.venue{
-    font-size:20px;
+.event-info{
+    color:#ead8a5;
+    font-size:16px;
     line-height:2;
-    color:#f9e9bd;
 }
 
-/* COUNTDOWN */
-#countdown-section{
-    min-height:70vh;
-    background:#0d0203;
-}
+/* =========================
+   WEDDING SCENE
+========================= */
 
-.countdown{
-    display:flex;
-    justify-content:center;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-top:30px;
-}
-
-.time-box{
-    width:110px;
-    padding:20px 10px;
-    border:1px solid #a77a30;
-    border-radius:15px;
-    background:#351010;
-}
-
-.time-box span{
-    display:block;
+.wedding-date{
     font-family:'Cinzel',serif;
-    font-size:40px;
-    color:#ffd76a;
+    font-size:clamp(42px,10vw,80px);
+    color:#f5c85c;
+    line-height:1.2;
 }
 
-.time-box small{
-    color:#d9bd72;
+.time{
+    font-size:20px;
+    color:#ffe8a9;
+    margin:20px;
 }
 
-/* FAMILY */
-#family{
-    background:linear-gradient(#250708,#100203);
+.venue{
+    font-size:17px;
+    line-height:2;
+    color:#ead8a5;
 }
 
-.family-box{
-    max-width:850px;
+/* =========================
+   RECEPTION
+========================= */
+
+.reception-title{
+    font-size:clamp(35px,9vw,65px);
+    color:#f5c85c;
 }
 
-.parents{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;
-    margin-top:30px;
+/* =========================
+   FINAL
+========================= */
+
+.final-message{
+    font-size:clamp(23px,6vw,40px);
+    line-height:1.8;
+    color:#ffeec2;
 }
 
-.parent-card{
-    padding:30px;
-    border:1px solid #9f722e;
-    border-radius:20px;
-    background:#3a0d0d;
-}
-
-.parent-card h3{
-    color:#ffd76a;
-    margin-bottom:15px;
-}
-
-.parent-card p{
-    font-size:21px;
-}
-
-/* RECEPTION */
-#reception{
-    background:radial-gradient(circle,#621b18,#1b0506 65%);
-}
-
-.reception-box{
-    max-width:850px;
-}
-
-.map-button{
-    display:inline-block;
+.final-names{
+    font-family:'Cinzel',serif;
+    font-size:clamp(30px,8vw,55px);
+    color:#f5c85c;
     margin-top:25px;
-    padding:14px 28px;
-    border-radius:30px;
-    background:linear-gradient(90deg,#b7791f,#ffd76a,#b7791f);
-    color:#280707;
-    text-decoration:none;
-    font-weight:bold;
-    transition:.3s;
 }
 
-.map-button:hover{
-    transform:scale(1.06);
-}
+/* =========================
+   CONTROLS
+========================= */
 
-/* FINAL */
-#final{
-    min-height:80vh;
-    background:
-      radial-gradient(circle,#671b19,#190405 65%,#070102);
-}
-
-.final-text{
-    font-size:clamp(25px,5vw,48px);
-    color:#fff0bd;
-    line-height:1.7;
-}
-
-.signature{
+#openButton{
     margin-top:30px;
-    font-family:'Cinzel',serif;
-    color:#ffd76a;
-    font-size:28px;
-}
-
-/* BUTTON */
-.music-btn{
-    position:fixed;
-    right:18px;
-    bottom:18px;
-    width:52px;
-    height:52px;
-    border-radius:50%;
-    border:1px solid #ffd76a;
-    background:#3a0c0c;
-    color:#ffd76a;
-    z-index:50;
+    padding:14px 35px;
+    border:1px solid #e5b54d;
+    border-radius:50px;
+    color:#2a0808;
+    background:linear-gradient(
+        90deg,
+        #b87920,
+        #ffe07c,
+        #b87920
+    );
+    font-weight:bold;
+    letter-spacing:2px;
     cursor:pointer;
-    font-size:22px;
 }
 
-/* FADE ANIMATION */
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:1.2s ease;
+#controls{
+    position:absolute;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:100;
+    display:flex;
+    gap:12px;
 }
 
-.reveal.show{
-    opacity:1;
-    transform:translateY(0);
+.control{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:1px solid #d9a83e;
+    background:#35090b;
+    color:#ffd66b;
+    cursor:pointer;
+    font-size:17px;
 }
 
-@keyframes fadeIn{
-    from{opacity:0;transform:scale(.9);}
-    to{opacity:1;transform:scale(1);}
+#progress{
+    position:absolute;
+    top:0;
+    left:0;
+    height:3px;
+    background:#e7b84e;
+    z-index:101;
+    width:0%;
+    transition:width .2s linear;
 }
 
-/* MOBILE */
-@media(max-width:750px){
+/* =========================
+   MOBILE
+========================= */
 
-    .event-grid{
-        grid-template-columns:1fr;
+@media(max-width:600px){
+
+    .gold-frame{
+        inset:12px;
     }
 
-    .parents{
-        grid-template-columns:1fr;
+    .corner{
+        font-size:18px;
     }
 
-    section{
-        padding:50px 16px;
+    .scene{
+        padding:25px;
     }
 
-    .names{
-        font-size:45px;
+    .event-card{
+        padding:30px 18px;
     }
 
-    .time-box{
-        width:75px;
+    .temple-arch{
+        height:68vh;
+        top:15%;
     }
+}
 
-    .time-box span{
-        font-size:28px;
-    }
+/* DESKTOP */
 
-    .venue{
-        font-size:17px;
+@media(min-width:900px){
+
+    #stage{
+        width:430px;
+        height:calc(100vh - 20px);
+        max-height:850px;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+        border-radius:12px;
+        box-shadow:
+            0 0 100px rgba(0,0,0,.8);
     }
 }
 </style>
@@ -453,423 +540,630 @@ section{
 
 <body>
 
-<div id="particles"></div>
+<div id="stage">
 
-<!-- OPENING -->
-<section id="opening">
-    <div class="temple-glow"></div>
+    <div id="progress"></div>
 
-    <div class="opening-content">
-        <div class="sri">ஸ்ரீ</div>
+    <div id="goldDust"></div>
 
-        <div class="ornament">✦ ✦ ✦</div>
-
-        <div class="small-title">WITH THE BLESSINGS OF GOD</div>
-
-        <div class="tamil-title">
-            சுபமஸ்து
-        </div>
-
-        <div class="lamp">🪔</div>
-
-        <div class="gold-line"></div>
-
-        <div class="small-title">
-            A BEAUTIFUL JOURNEY BEGINS
-        </div>
-
-        <div class="tap">
-            ↓ SCROLL TO BEGIN ↓
-        </div>
+    <div class="gold-frame">
+        <div class="corner tl">❖</div>
+        <div class="corner tr">❖</div>
+        <div class="corner bl">❖</div>
+        <div class="corner br">❖</div>
     </div>
-</section>
 
-<!-- HERO -->
-<section id="hero">
-    <div class="hero-content reveal">
+    <!-- ================= SCENE 1 ================= -->
 
-        <div class="invite">
-            YOU ARE CORDIALLY INVITED TO CELEBRATE
+    <section class="scene active" data-time="6000">
+
+        <div class="temple-arch"></div>
+
+        <div class="scene-inner">
+
+            <div class="sri">ஸ்ரீ</div>
+
+            <div class="ornament">
+                ✦ ❖ ✦
+            </div>
+
+            <div class="tiny">
+                WITH THE BLESSINGS OF GOD
+            </div>
+
+            <div class="lamp">
+                🪔
+            </div>
+
+            <div class="tamil">
+                சுபமஸ்து
+            </div>
+
+            <div class="script-line"></div>
+
+            <div class="tiny">
+                A BEAUTIFUL BEGINNING
+            </div>
+
+            <button id="openButton" onclick="startInvitation()">
+                OPEN INVITATION
+            </button>
+
         </div>
 
-        <div class="ornament">❈ ❈ ❈</div>
+    </section>
 
-        <div class="names">
-            B VIJAY
-            <span class="heart">♥</span>
-            R PRIYA
+
+    <!-- ================= SCENE 2 ================= -->
+
+    <section class="scene" data-time="6000">
+
+        <div class="scene-inner">
+
+            <div class="tiny">
+                TOGETHER WITH OUR FAMILIES
+            </div>
+
+            <div class="ornament">
+                ❈ ❈ ❈
+            </div>
+
+            <div class="tamil">
+                இரு மனங்கள்...
+            </div>
+
+            <div class="script-line"></div>
+
+            <div class="tamil">
+                ஓர் அழகான வாழ்க்கை...
+            </div>
+
         </div>
 
-        <div class="gold-line"></div>
+    </section>
 
-        <div class="tamil-title">
-            திருமண அழைப்பிதழ்
+
+    <!-- ================= SCENE 3 ================= -->
+
+    <section class="scene" data-time="7000">
+
+        <div class="scene-inner">
+
+            <div class="tiny">
+                THE WEDDING OF
+            </div>
+
+            <div class="couple">
+                B VIJAY
+            </div>
+
+            <div class="and">
+                <span class="heart">♥</span>
+                &
+                <span class="heart">♥</span>
+            </div>
+
+            <div class="couple">
+                R PRIYA
+            </div>
+
+            <div class="ornament">
+                ✦ ❖ ✦
+            </div>
+
+            <div class="tiny">
+                15 NOVEMBER 2026
+            </div>
+
         </div>
 
-        <div class="date">
-            15 • 11 • 2026
-        </div>
+    </section>
 
-        <div class="scroll">
-            OUR SPECIAL DAY
-        </div>
-    </div>
-</section>
 
-<!-- EVENTS -->
-<section id="events">
-    <div class="events-container reveal">
+    <!-- ================= SCENE 4 ================= -->
 
-        <div class="ornament">✦ ❖ ✦</div>
+    <section class="scene" data-time="6000">
 
-        <h2 class="section-title">திருமண நிகழ்வுகள்</h2>
-
-        <div class="event-grid">
+        <div class="scene-inner">
 
             <div class="event-card">
-                <div class="event-icon">💍</div>
-                <h3>Engagement</h3>
-                <p>
-                    11 November 2026<br>
+
+                <div class="event-icon">
+                    💍
+                </div>
+
+                <div class="event-title">
+                    நிச்சயதார்த்தம்
+                </div>
+
+                <div class="script-line"></div>
+
+                <div class="event-date">
+                    11 NOVEMBER 2026
+                </div>
+
+                <div class="event-info">
                     6:00 PM – 9:00 PM<br><br>
                     Shri Muthumariamman Temple<br>
                     Antop Hill
-                </p>
+                </div>
+
             </div>
 
+        </div>
+
+    </section>
+
+
+    <!-- ================= SCENE 5 ================= -->
+
+    <section class="scene" data-time="6000">
+
+        <div class="scene-inner">
+
             <div class="event-card">
-                <div class="event-icon">🌼</div>
-                <h3>Haldi</h3>
-                <p>
-                    12, 13 & 14 November 2026<br>
+
+                <div class="event-icon">
+                    🌼
+                </div>
+
+                <div class="event-title">
+                    மஞ்சள் விழா
+                </div>
+
+                <div class="script-line"></div>
+
+                <div class="event-date">
+                    12 • 13 • 14 NOVEMBER
+                </div>
+
+                <div class="event-info">
                     7:00 PM onwards<br><br>
                     Building No. B1<br>
                     New MHADA Colony<br>
                     Kokri Agar, Sion Koliwada
-                </p>
-            </div>
+                </div>
 
-            <div class="event-card">
-                <div class="event-icon">🛕</div>
-                <h3>Wedding</h3>
-                <p>
-                    15 November 2026<br>
-                    9:30 AM – 10:30 AM<br><br>
-                    Shri Kanniga Parameshwari Temple<br>
-                    Matunga
-                </p>
             </div>
 
         </div>
-    </div>
-</section>
 
-<!-- WEDDING -->
-<section id="wedding">
-    <div class="wedding-box reveal">
+    </section>
 
-        <div class="ornament">🪔 ✦ 🪔</div>
 
-        <div class="small-title">
-            THE MOST BEAUTIFUL DAY
-        </div>
+    <!-- ================= SCENE 6 ================= -->
 
-        <div class="big-date">
-            15 NOVEMBER<br>2026
-        </div>
+    <section class="scene" data-time="8000">
 
-        <div class="gold-line"></div>
+        <div class="scene-inner">
 
-        <div class="venue">
-            <strong class="gold">திருமணம்</strong><br><br>
-
-            காலை 09:30 மணி முதல் 10:30 மணி வரை<br><br>
-
-            🛕 Shri Kanniga Parameshwari Temple<br>
-            Matunga
-        </div>
-
-    </div>
-</section>
-
-<!-- COUNTDOWN -->
-<section id="countdown-section">
-    <div class="reveal">
-
-        <div class="ornament">✦ ✦ ✦</div>
-
-        <h2 class="section-title">
-            COUNTING THE MOMENTS
-        </h2>
-
-        <div class="countdown">
-
-            <div class="time-box">
-                <span id="days">0</span>
-                <small>DAYS</small>
+            <div class="tiny">
+                THE SACRED CEREMONY
             </div>
 
-            <div class="time-box">
-                <span id="hours">0</span>
-                <small>HOURS</small>
+            <div class="ornament">
+                🪔 ✦ 🪔
             </div>
 
-            <div class="time-box">
-                <span id="minutes">0</span>
-                <small>MINUTES</small>
+            <div class="event-title">
+                திருமணம்
             </div>
 
-            <div class="time-box">
-                <span id="seconds">0</span>
-                <small>SECONDS</small>
+            <div class="script-line"></div>
+
+            <div class="wedding-date">
+                15<br>
+                NOVEMBER<br>
+                2026
+            </div>
+
+            <div class="time">
+                09:30 AM – 10:30 AM
+            </div>
+
+            <div class="venue">
+                🛕 Shri Kanniga Parameshwari Temple<br>
+                Matunga
             </div>
 
         </div>
-    </div>
-</section>
 
-<!-- FAMILY -->
-<section id="family">
-    <div class="family-box reveal">
+    </section>
 
-        <div class="ornament">❖ ❖ ❖</div>
 
-        <h2 class="section-title">
-            WITH THE BLESSINGS OF OUR FAMILIES
-        </h2>
+    <!-- ================= SCENE 7 ================= -->
 
-        <div class="parents">
+    <section class="scene" data-time="7000">
 
-            <div class="parent-card">
-                <h3>BRIDE'S FAMILY</h3>
-                <p>
-                    R. Priya<br><br>
-                    Daughter of<br>
-                    <strong>Raja & Saraswati</strong>
-                </p>
+        <div class="scene-inner">
+
+            <div class="ornament">
+                ✦ ❖ ✦
             </div>
 
-            <div class="parent-card">
-                <h3>GROOM'S FAMILY</h3>
-                <p>
-                    B. Vijay<br><br>
-                    Son of<br>
-                    <strong>P. Balu & Kandhaee</strong>
-                </p>
+            <div class="tiny">
+                CELEBRATE WITH US
+            </div>
+
+            <div class="reception-title">
+                வரவேற்பு
+            </div>
+
+            <div class="script-line"></div>
+
+            <div class="wedding-date">
+                15 NOVEMBER<br>
+                2026
+            </div>
+
+            <div class="time">
+                12:00 PM – 11:00 PM
+            </div>
+
+            <div class="venue">
+                Shri Sanatan High School Hall<br>
+                Sardar Nagar No. 4<br>
+                Antop Hill
             </div>
 
         </div>
-    </div>
-</section>
 
-<!-- RECEPTION -->
-<section id="reception">
-    <div class="reception-box reveal">
+    </section>
 
-        <div class="ornament">🎉 ✦ 🎉</div>
 
-        <div class="small-title">
-            JOIN US FOR THE RECEPTION
+    <!-- ================= SCENE 8 ================= -->
+
+    <section class="scene" data-time="7000">
+
+        <div class="scene-inner">
+
+            <div class="tiny">
+                WITH THE BLESSINGS OF OUR PARENTS
+            </div>
+
+            <div class="ornament">
+                ❖ ❖ ❖
+            </div>
+
+            <div class="tamil">
+                மணமக்கள்
+            </div>
+
+            <div class="script-line"></div>
+
+            <div class="event-info">
+
+                <span class="gold">R. PRIYA</span><br>
+                Daughter of<br>
+                <b>Raja & Saraswati</b>
+
+                <br><br>
+
+                <span class="gold">B. VIJAY</span><br>
+                Son of<br>
+                <b>P. Balu & Kandhaee</b>
+
+            </div>
+
         </div>
 
-        <h2 class="section-title">
-            வரவேற்பு
-        </h2>
+    </section>
 
-        <div class="big-date">
-            15 NOVEMBER 2026
+
+    <!-- ================= SCENE 9 ================= -->
+
+    <section class="scene" data-time="9000">
+
+        <div class="scene-inner">
+
+            <div class="lamp">
+                🪔
+            </div>
+
+            <div class="final-message">
+
+                உங்கள் அன்பும்<br>
+                ஆசீர்வாதமும்<br>
+                எங்கள் புதிய வாழ்க்கையின்<br>
+                முதல் பரிசாக இருக்கட்டும்.
+
+            </div>
+
+            <div class="script-line"></div>
+
+            <div class="final-message">
+                எங்கள் திருமண விழாவில்<br>
+                குடும்பத்துடன் கலந்து கொண்டு<br>
+                மணமக்களை வாழ்த்துமாறு<br>
+                அன்புடன் அழைக்கிறோம்.
+            </div>
+
+            <div class="final-names">
+                B VIJAY ❤️ R PRIYA
+            </div>
+
         </div>
 
-        <div class="venue">
+    </section>
 
-            🕔 5:00 PM – 11:00 PM<br><br>
 
-            <strong class="gold">
-                Shri Sanatan High School Hall
-            </strong><br>
+    <!-- CONTROLS -->
 
-            Sardar Nagar No. 4<br>
-            Antop Hill
+    <div id="controls">
 
-        </div>
+        <button class="control" onclick="previousScene()">
+            ‹
+        </button>
 
-        <a class="map-button"
-           href="https://www.google.com/maps/search/?api=1&query=Shri+Sanatan+High+School+Hall+Sardar+Nagar+No+4+Antop+Hill"
-           target="_blank">
-            📍 OPEN LOCATION
-        </a>
+        <button class="control" onclick="togglePlay()" id="playButton">
+            ❚❚
+        </button>
 
-    </div>
-</section>
-
-<!-- FINAL -->
-<section id="final">
-    <div class="reveal">
-
-        <div class="ornament">🪔 ✦ 🪔</div>
-
-        <div class="final-text">
-            உங்கள் அன்பும்<br>
-            ஆசீர்வாதமும் எங்கள்<br>
-            புதிய வாழ்க்கையின்<br>
-            முதல் பரிசாக இருக்கட்டும் ❤️
-        </div>
-
-        <div class="gold-line"></div>
-
-        <div class="final-text">
-            We warmly invite you<br>
-            to celebrate our<br>
-            beautiful beginning.
-        </div>
-
-        <div class="signature">
-            B VIJAY ❤️ R PRIYA
-        </div>
-
-        <div class="ornament" style="margin-top:35px;">
-            ✦ ❖ ✦ ❖ ✦
-        </div>
+        <button class="control" onclick="nextScene()">
+            ›
+        </button>
 
     </div>
-</section>
 
-<!-- MUSIC BUTTON -->
-<button class="music-btn" onclick="toggleMusic()" id="musicButton">
-    🔇
-</button>
+</div>
 
-<audio id="music" loop>
-    <!-- No external music required -->
-</audio>
 
 <script>
 
-/* PARTICLES */
-const particleContainer = document.getElementById("particles");
+/* =====================================
+   GOLD PARTICLES
+===================================== */
 
-for(let i=0;i<45;i++){
+const dust=document.getElementById("goldDust");
 
-    const p=document.createElement("div");
+for(let i=0;i<70;i++){
 
-    p.className="particle";
+    const particle=document.createElement("div");
 
-    p.style.left=Math.random()*100+"%";
+    particle.className="dust";
 
-    p.style.animationDelay=(Math.random()*7)+"s";
+    particle.style.left=Math.random()*100+"%";
 
-    p.style.animationDuration=(5+Math.random()*6)+"s";
+    particle.style.animationDuration=
+        (5+Math.random()*9)+"s";
 
-    p.style.width=(1+Math.random()*3)+"px";
+    particle.style.animationDelay=
+        (-Math.random()*10)+"s";
 
-    p.style.height=p.style.width;
+    const size=
+        (1+Math.random()*3)+"px";
 
-    particleContainer.appendChild(p);
+    particle.style.width=size;
+    particle.style.height=size;
+
+    dust.appendChild(particle);
 }
 
 
-/* SCROLL REVEAL */
-const observer = new IntersectionObserver((entries)=>{
+/* =====================================
+   SCENE ENGINE
+===================================== */
 
-    entries.forEach(entry=>{
+const scenes=
+    document.querySelectorAll(".scene");
 
-        if(entry.isIntersecting){
+let current=0;
+let playing=false;
+let timer=null;
+let sceneStart=0;
 
-            entry.target.classList.add("show");
+function showScene(index){
+
+    if(index<0){
+        index=scenes.length-1;
+    }
+
+    if(index>=scenes.length){
+        index=0;
+    }
+
+    scenes.forEach(scene=>{
+        scene.classList.remove("active");
+    });
+
+    current=index;
+
+    scenes[current].classList.add("active");
+
+    sceneStart=Date.now();
+
+    updateProgress();
+
+    if(playing){
+        scheduleNext();
+    }
+}
+
+
+/* =====================================
+   AUTO PLAY
+===================================== */
+
+function scheduleNext(){
+
+    clearTimeout(timer);
+
+    const duration=
+        Number(scenes[current].dataset.time) || 6000;
+
+    timer=setTimeout(()=>{
+
+        if(current===scenes.length-1){
+
+            showScene(0);
+
+        }else{
+
+            showScene(current+1);
 
         }
 
-    });
-
-},{
-    threshold:0.15
-});
-
-document.querySelectorAll(".reveal").forEach(el=>{
-    observer.observe(el);
-});
-
-
-/* COUNTDOWN */
-const weddingDate = new Date("November 15, 2026 09:30:00").getTime();
-
-function updateCountdown(){
-
-    const now = new Date().getTime();
-
-    const distance = weddingDate - now;
-
-    if(distance <= 0){
-
-        document.getElementById("days").innerText="0";
-        document.getElementById("hours").innerText="0";
-        document.getElementById("minutes").innerText="0";
-        document.getElementById("seconds").innerText="0";
-
-        return;
-    }
-
-    const days = Math.floor(distance/(1000*60*60*24));
-
-    const hours = Math.floor(
-        (distance%(1000*60*60*24))/(1000*60*60)
-    );
-
-    const minutes = Math.floor(
-        (distance%(1000*60*60))/(1000*60)
-    );
-
-    const seconds = Math.floor(
-        (distance%(1000*60))/1000
-    );
-
-    document.getElementById("days").innerText=days;
-    document.getElementById("hours").innerText=hours;
-    document.getElementById("minutes").innerText=minutes;
-    document.getElementById("seconds").innerText=seconds;
+    },duration);
 }
 
-updateCountdown();
 
-setInterval(updateCountdown,1000);
+/* =====================================
+   START
+===================================== */
+
+function startInvitation(){
+
+    playing=true;
+
+    document.getElementById("playButton").innerText="❚❚";
+
+    showScene(1);
+
+}
 
 
-/* MUSIC BUTTON
-   Browser restrictions mean music cannot autoplay.
-   This button is ready if you later add an MP3.
-*/
-let musicPlaying=false;
+/* =====================================
+   PLAY / PAUSE
+===================================== */
 
-function toggleMusic(){
+function togglePlay(){
 
-    const music=document.getElementById("music");
-    const button=document.getElementById("musicButton");
+    playing=!playing;
 
-    if(!music.src || music.src === window.location.href){
+    const button=
+        document.getElementById("playButton");
 
-        alert("Add your wedding music MP3 to the website later.");
+    if(playing){
 
-        return;
-    }
+        button.innerText="❚❚";
 
-    if(musicPlaying){
-
-        music.pause();
-
-        button.innerText="🔇";
-
-        musicPlaying=false;
+        scheduleNext();
 
     }else{
 
-        music.play();
+        button.innerText="▶";
 
-        button.innerText="🎵";
-
-        musicPlaying=true;
+        clearTimeout(timer);
 
     }
+
 }
+
+
+/* =====================================
+   NEXT / PREVIOUS
+===================================== */
+
+function nextScene(){
+
+    showScene(current+1);
+
+}
+
+function previousScene(){
+
+    showScene(current-1);
+
+}
+
+
+/* =====================================
+   PROGRESS
+===================================== */
+
+function updateProgress(){
+
+    const progress=
+        document.getElementById("progress");
+
+    progress.style.width=
+        ((current+1)/scenes.length*100)+"%";
+
+}
+
+
+/* =====================================
+   KEYBOARD
+===================================== */
+
+document.addEventListener("keydown",e=>{
+
+    if(e.key==="ArrowRight"){
+        nextScene();
+    }
+
+    if(e.key==="ArrowLeft"){
+        previousScene();
+    }
+
+    if(e.key===" "){
+        togglePlay();
+    }
+
+});
+
+
+/* =====================================
+   SWIPE
+===================================== */
+
+let touchStartY=0;
+
+document.addEventListener("touchstart",e=>{
+
+    touchStartY=
+        e.changedTouches[0].screenY;
+
+});
+
+document.addEventListener("touchend",e=>{
+
+    const touchEndY=
+        e.changedTouches[0].screenY;
+
+    const difference=
+        touchStartY-touchEndY;
+
+    if(Math.abs(difference)>50){
+
+        if(difference>0){
+            nextScene();
+        }else{
+            previousScene();
+        }
+
+    }
+
+});
+
+
+/* =====================================
+   PROGRESS TIMER
+===================================== */
+
+setInterval(()=>{
+
+    if(!playing) return;
+
+    const duration=
+        Number(scenes[current].dataset.time);
+
+    const elapsed=
+        Date.now()-sceneStart;
+
+    const localProgress=
+        Math.min(elapsed/duration,1);
+
+    const base=
+        current/scenes.length;
+
+    const total=
+        (base+localProgress/scenes.length)*100;
+
+    document.getElementById("progress")
+        .style.width=total+"%";
+
+},100);
 
 </script>
 
