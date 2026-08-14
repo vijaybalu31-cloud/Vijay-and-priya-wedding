@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vijay ❤️ Priya | Wedding Invitation</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Serif+Tamil:wght@400;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Cormorant Garamond',serif;
+    background:#fff8e7;
+    color:#4b1d1d;
+    overflow-x:hidden;
+}
+
+/* ===== COMMON ===== */
+
+section{
+    padding:80px 20px;
+    position:relative;
+    overflow:hidden;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    text-align:center;
+}
+
+.section-title{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:36px;
+    color:#9d174d;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    color:#795548;
+    font-size:19px;
+    margin-bottom:35px;
+}
+
+.ornament{
+    color:#d4a017;
+    font-size:28px;
+    margin:10px 0 20px;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,215,0,.35),transparent 25%),
+        radial-gradient(circle at 80% 30%,rgba(255,105,180,.25),transparent 25%),
+        linear-gradient(135deg,#7b0f1b,#c21f39,#f59e0b,#116530);
+    color:white;
+    padding:40px 20px;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:3px solid rgba(255,215,0,.8);
+    border-radius:25px;
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+}
+
+.lamp{
+    font-size:60px;
+    animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{filter:drop-shadow(0 0 5px #ffd700)}
+    to{filter:drop-shadow(0 0 25px #fff)}
+}
+
+.small-tamil{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:22px;
+    letter-spacing:2px;
+    margin:15px 0;
+}
+
+.hero h1{
+    font-size:70px;
+    line-height:1.05;
+    text-shadow:0 4px 15px rgba(0,0,0,.35);
+}
+
+.heart{
+    color:#ffd700;
+    display:inline-block;
+    margin:15px;
+    animation:beat 1.2s infinite;
+}
+
+@keyframes beat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.25)}
+}
+
+.hero-date{
+    font-size:30px;
+    margin:20px 0;
+    color:#fff4b8;
+}
+
+.hero-text{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:22px;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:13px 28px;
+    border-radius:40px;
+    background:#ffd700;
+    color:#6b0f1a;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:18px;
+    transition:.3s;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+}
+
+/* ===== FLOWERS ===== */
+
+.flower{
+    position:absolute;
+    font-size:28px;
+    animation:fall linear infinite;
+    opacity:.8;
+}
+
+.f1{left:5%;animation-duration:8s}
+.f2{left:20%;animation-duration:11s;animation-delay:2s}
+.f3{left:40%;animation-duration:9s;animation-delay:1s}
+.f4{left:65%;animation-duration:12s}
+.f5{left:85%;animation-duration:10s;animation-delay:3s}
+
+@keyframes fall{
+    0%{transform:translateY(-100px) rotate(0)}
+    100%{transform:translateY(110vh) rotate(360deg)}
+}
+
+/* ===== STORY ===== */
+
+.story{
+    background:
+        linear-gradient(rgba(255,248,231,.94),rgba(255,248,231,.94)),
+        repeating-radial-gradient(circle,#d4a017 0 2px,transparent 2px 25px);
+}
+
+.story-card{
+    max-width:800px;
+    margin:auto;
+    padding:35px;
+    border:2px solid #d4a017;
+    border-radius:25px;
+    background:#fffdf4;
+    box-shadow:0 10px 35px rgba(111,60,20,.15);
+}
+
+.story-card p{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:21px;
+    line-height:2;
+}
+
+/* ===== EVENTS ===== */
+
+.events{
+    background:linear-gradient(180deg,#fff1c7,#ffe4e1);
+}
+
+.event-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:25px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.event-card{
+    padding:35px 25px;
+    border-radius:25px;
+    color:white;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+    transition:.4s;
+}
+
+.event-card:hover{
+    transform:translateY(-8px);
+}
+
+.event-card:nth-child(1){
+    background:linear-gradient(135deg,#6a1b9a,#c2185b);
+}
+
+.event-card:nth-child(2){
+    background:linear-gradient(135deg,#f57c00,#fbc02d);
+}
+
+.event-card:nth-child(3){
+    background:linear-gradient(135deg,#8b0000,#d4a017);
+}
+
+.event-card:nth-child(4){
+    background:linear-gradient(135deg,#00695c,#1565c0);
+}
+
+.event-icon{
+    font-size:50px;
+}
+
+.event-card h3{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:28px;
+    margin:12px 0;
+}
+
+.event-card p{
+    font-size:19px;
+    line-height:1.7;
+}
+
+.map-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:9px 20px;
+    border-radius:30px;
+    background:white;
+    color:#7b0f1b;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* ===== COUNTDOWN ===== */
+
+.countdown{
+    background:linear-gradient(135deg,#641220,#9d174d,#d4a017);
+    color:white;
+}
+
+.countdown .section-title{
+    color:#ffe9a6;
+}
+
+.timer{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.time-box{
+    width:120px;
+    padding:20px 10px;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,215,0,.6);
+    border-radius:18px;
+    backdrop-filter:blur(8px);
+}
+
+.time-box span{
+    display:block;
+    font-size:42px;
+    font-weight:bold;
+    color:#ffe28a;
+}
+
+.time-box small{
+    font-size:16px;
+}
+
+/* ===== FAMILY ===== */
+
+.family{
+    background:#fffdf4;
+}
+
+.family-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+    max-width:800px;
+    margin:auto;
+}
+
+.family-card{
+    padding:30px;
+    border-radius:20px;
+    background:linear-gradient(135deg,#fff1b8,#fff);
+    border:2px solid #d4a017;
+}
+
+.family-card h3{
+    color:#9d174d;
+    font-size:25px;
+    margin-bottom:15px;
+}
+
+.family-card p{
+    font-size:21px;
+}
+
+/* ===== GALLERY ===== */
+
+.gallery{
+    background:linear-gradient(135deg,#fce4ec,#e8f5e9,#fff8e1);
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    max-width:950px;
+    margin:auto;
+}
+
+.photo{
+    height:230px;
+    border-radius:20px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#d4a017,#c2185b);
+    color:white;
+    font-size:20px;
+    border:4px solid white;
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+}
+
+/* ===== INVITATION ===== */
+
+.invitation{
+    background:
+        radial-gradient(circle at center,#fff8e1,#f8bbd0);
+}
+
+.invite-card{
+    max-width:850px;
+    margin:auto;
+    padding:50px 30px;
+    border:5px double #d4a017;
+    border-radius:25px;
+    background:#fffdf5;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+.invite-card h2{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:32px;
+    color:#8b0000;
+}
+
+.invite-card h3{
+    font-size:45px;
+    color:#9d174d;
+    margin:20px 0;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    padding:40px 20px;
+    text-align:center;
+    background:#4a0e17;
+    color:#ffe8a3;
+}
+
+footer p{
+    font-family:'Noto Serif Tamil',serif;
+    font-size:18px;
+}
+
+/* ===== MUSIC BUTTON ===== */
+
+.music-btn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    border:none;
+    background:#d4a017;
+    color:#6b0f1a;
+    font-size:24px;
+    cursor:pointer;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:700px){
+
+    section{
+        padding:65px 15px;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .hero-date{
+        font-size:25px;
+    }
+
+    .section-title{
+        font-size:30px;
+    }
+
+    .event-grid,
+    .family-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .photo{
+        height:160px;
+    }
+
+    .time-box{
+        width:90px;
+    }
+
+    .time-box span{
+        font-size:32px;
+    }
+
+    .story-card{
+        padding:25px 18px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOWERS -->
+<div class="flower f1">🌸</div>
+<div class="flower f2">🌼</div>
+<div class="flower f3">🌺</div>
+<div class="flower f4">🌸</div>
+<div class="flower f5">🌼</div>
+
+<!-- HERO -->
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="lamp">🪔</div>
+
+        <div class="small-tamil">
+            ஸ்ரீ
+        </div>
+
+        <div class="small-tamil">
+            சுபமஸ்து
+        </div>
+
+        <div class="ornament">❈ ✦ ❈</div>
+
+        <h1>
+            B. VIJAY
+            <span class="heart">♥</span>
+            R. PRIYA
+        </h1>
+
+        <p class="hero-text">
+            இருமனம் இணையும் இனிய திருமணம்
+        </p>
+
+        <div class="hero-date">
+            15 • 11 • 2026
+        </div>
+
+        <p>
+            With the blessings of our beloved parents<br>
+            and the love of our family & friends
+        </p>
+
+        <a href="#events" class="btn">
+            ✨ View Our Wedding ✨
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- STORY -->
+<section class="story">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            💕 A New Beginning 💕
+        </h2>
+
+        <div class="ornament">🌺 🪔 🌺</div>
+
+        <div class="story-card">
+
+            <p>
+                Two hearts, two families and one beautiful journey
+                are coming together in the most precious celebration
+                of our lives.
+            </p>
+
+            <br>
+
+            <p>
+                With the blessings of our elders and the love of
+                everyone who matters to us, we invite you to join us
+                as we begin our journey together.
+            </p>
+
+            <br>
+
+            <p>
+                உங்கள் அன்பும் ஆசீர்வாதமும் எங்கள் திருமண நாளில்
+                எங்களுக்கு மிகப்பெரிய பரிசாக இருக்கும்.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+<section class="countdown">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            ⏳ Counting Every Moment
+        </h2>
+
+        <p class="section-subtitle" style="color:#fff3c4;">
+            Our big day is getting closer!
+        </p>
+
+        <div class="timer">
+
+            <div class="time-box">
+                <span id="days">0</span>
+                <small>Days</small>
+            </div>
+
+            <div class="time-box">
+                <span id="hours">0</span>
+                <small>Hours</small>
+            </div>
+
+            <div class="time-box">
+                <span id="minutes">0</span>
+                <small>Minutes</small>
+            </div>
+
+            <div class="time-box">
+                <span id="seconds">0</span>
+                <small>Seconds</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EVENTS -->
+<section class="events" id="events">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            🌺 Wedding Celebrations 🌺
+        </h2>
+
+        <p class="section-subtitle">
+            நம் திருமண நிகழ்வுகளுக்கு அன்புடன் வரவேற்கிறோம்
+        </p>
+
+        <div class="event-grid">
+
+            <!-- ENGAGEMENT -->
+            <div class="event-card">
+
+                <div class="event-icon">💍</div>
+
+                <h3>Engagement</h3>
+
+                <p>
+                    11 November 2026<br>
+                    06:00 PM – 09:00 PM<br><br>
+
+                    Shri Muthumariamman Temple<br>
+                    Antop Hill
+                </p>
+
+                <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Shri+Muthumariamman+Temple+Antop+Hill+Mumbai"
+                target="_blank">
+                    📍 View Location
+                </a>
+
+            </div>
+
+
+            <!-- HALDI -->
+            <div class="event-card">
+
+                <div class="event-icon">🌼</div>
+
+                <h3>Haldi</h3>
+
+                <p>
+                    12, 13 & 14 November 2026<br>
+                    07:00 PM onwards<br><br>
+
+                    B1 New MHADA Colony<br>
+                    Kokri Agar, Sion Koliwada
+                </p>
+
+                <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Kokri+Agar+Sion+Koliwada+Mumbai"
+                target="_blank">
+                    📍 View Location
+                </a>
+
+            </div>
+
+
+            <!-- WEDDING -->
+            <div class="event-card">
+
+                <div class="event-icon">🪔</div>
+
+                <h3>Wedding</h3>
+
+                <p>
+                    15 November 2026<br>
+                    09:30 AM – 10:30 AM<br><br>
+
+                    Shri Kanniga Parameshwari Temple<br>
+                    Matunga, Mumbai
+                </p>
+
+                <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Shri+Kanniga+Parameshwari+Temple+Matunga+Mumbai"
+                target="_blank">
+                    📍 View Location
+                </a>
+
+            </div>
+
+
+            <!-- RECEPTION -->
+            <div class="event-card">
+
+                <div class="event-icon">🎊</div>
+
+                <h3>Reception</h3>
+
+                <p>
+                    15 November 2026<br>
+                    05:00 PM – 11:00 PM<br><br>
+
+                    Shri Sanatan High School Hall<br>
+                    Sardar Nagar No. 4, Antop Hill
+                </p>
+
+                <a
+                class="map-btn"
+                href="https://www.google.com/maps/search/?api=1&query=Shri+Sanatan+High+School+Hall+Sardar+Nagar+Antop+Hill+Mumbai"
+                target="_blank">
+                    📍 View Location
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAMILY -->
+<section class="family">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            👨‍👩‍👧‍👦 With the Blessings of Our Families
+        </h2>
+
+        <div class="ornament">❈ 🌺 ❈</div>
+
+        <div class="family-grid">
+
+            <div class="family-card">
+
+                <h3>🌸 Bride's Family</h3>
+
+                <p>
+                    <strong>R. PRIYA</strong>
+                </p>
+
+                <br>
+
+                <p>
+                    Daughter of<br>
+                    <strong>Raja & Saraswati</strong>
+                </p>
+
+            </div>
+
+
+            <div class="family-card">
+
+                <h3>🌺 Groom's Family</h3>
+
+                <p>
+                    <strong>B. VIJAY</strong>
+                </p>
+
+                <br>
+
+                <p>
+                    Son of<br>
+                    <strong>P. Balu & Kandhaee</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+<section class="gallery">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            📸 Our Memories
+        </h2>
+
+        <p class="section-subtitle">
+            Our beautiful moments will be added here ❤️
+        </p>
+
+        <div class="gallery-grid">
+
+            <div class="photo">🌸 Photo 01</div>
+            <div class="photo">💑 Photo 02</div>
+            <div class="photo">🌺 Photo 03</div>
+            <div class="photo">❤️ Photo 04</div>
+            <div class="photo">💍 Photo 05</div>
+            <div class="photo">🪔 Photo 06</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- INVITATION -->
+<section class="invitation">
+
+    <div class="container">
+
+        <div class="invite-card">
+
+            <div class="lamp">🪔</div>
+
+            <h2>
+                திருமண அழைப்பிதழ்
+            </h2>
+
+            <div class="ornament">
+                🌺 ✦ 🌺
+            </div>
+
+            <p>
+                We cordially invite you and your family
+                to celebrate the wedding of
+            </p>
+
+            <h3>
+                B. VIJAY<br>
+                ❤️<br>
+                R. PRIYA
+            </h3>
+
+            <p>
+                Your presence and blessings will make
+                our special day even more memorable.
+            </p>
+
+            <a
+            class="btn"
+            href="https://wa.me/?text=💍%20You%20are%20warmly%20invited%20to%20the%20wedding%20of%20B.%20Vijay%20%26%20R.%20Priya%20❤️%0A%0A15%20November%202026%0A%0AWe%20would%20be%20honoured%20by%20your%20presence%20and%20blessings.%20🪔"
+            target="_blank">
+                💚 Share on WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="lamp">🪔</div>
+
+    <p>
+        அன்புடன் அழைக்கும்<br>
+        Vijay ❤️ Priya & Family
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 | Our Wedding Celebration
+    </p>
+
+</footer>
+
+
+<!-- MUSIC BUTTON -->
+
+<button class="music-btn" onclick="toggleMusic()" id="musicButton">
+    🎵
+</button>
+
+<audio id="weddingMusic" loop>
+    <!-- Add your music file later -->
+</audio>
+
+
+<script>
+
+/* ===== COUNTDOWN ===== */
+
+const weddingDate =
+new Date("November 15, 2026 09:30:00").getTime();
+
+function updateCountdown(){
+
+    const now = new Date().getTime();
+
+    const distance = weddingDate - now;
+
+    if(distance <= 0){
+
+        document.getElementById("days").innerText = "0";
+        document.getElementById("hours").innerText = "0";
+        document.getElementById("minutes").innerText = "0";
+        document.getElementById("seconds").innerText = "0";
+
+        return;
+    }
+
+    const days =
+    Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    const hours =
+    Math.floor((distance % (1000 * 60 * 60 * 24))
+    / (1000 * 60 * 60));
+
+    const minutes =
+    Math.floor((distance % (1000 * 60 * 60))
+    / (1000 * 60));
+
+    const seconds =
+    Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+}
+
+updateCountdown();
+
+setInterval(updateCountdown,1000);
+
+
+/* ===== MUSIC ===== */
+
+function toggleMusic(){
+
+    const music =
+    document.getElementById("weddingMusic");
+
+    const button =
+    document.getElementById("musicButton");
+
+    if(music.paused){
+
+        music.play();
+
+        button.innerText = "⏸️";
+
+    }else{
+
+        music.pause();
+
+        button.innerText = "🎵";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
